@@ -1,10 +1,3 @@
-/**
- * A MergesortHeapNode has a key and an index that indicates
- * which subarray that key came from.
- * 
- * @author Donald Chinn
- * @version September 19, 2003
- */
 public class MergesortHeapNode implements Comparable {
     int key;            // the data
     int whichSubarray;  // which subarray the data came from

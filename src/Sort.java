@@ -1,18 +1,3 @@
-/*
- * Modified by Brandon Chalk
- * TCSS 343
- * 4/15/10
- * 
- */
-import java.util.*;
-
-/**
- * A class that contains a group of sorting algorithms. The input to the sorting
- * algorithms is assumed to be an array of integers.
- * 
- * @author Donald Chinn
- * @version September 19, 2003
- */
 public class Sort {
 
 	public Sort() {
@@ -96,33 +81,6 @@ public class Sort {
 		}
 	}
 
-	/**
-	 * Given an integer size, produce an array of size random integers. The
-	 * integers of the array are between 0 and size (inclusive) with random
-	 * uniform distribution.
-	 * 
-	 * @param size
-	 *            the number of elements in the returned array
-	 * @return an array of integers
-	 */
-	public static int[] getRandomArrayOfIntegers(int size) {
-		int[] data = new int[size];
-		for (int i = 0; i < size; i++) {
-			data[i] = (int) ((size + 1) * Math.random());
-		}
-		return data;
-	}
-
-	/**
-	 * Given an integer size, produce an array of size random integers. The
-	 * integers of the output array are between 0 and size-1 with exactly one of
-	 * each in the array. Each permutation is generated with random uniform
-	 * distribution.
-	 * 
-	 * @param size
-	 *            the number of elements in the returned array
-	 * @return an array of integers
-	 */
 	public static int[] getRandomPermutationOfIntegers(int size) {
 		int[] data = new int[size];
 		for (int i = 0; i < size; i++) {
@@ -149,7 +107,6 @@ public class Sort {
 		int k = 4;
 		kwayMergesort(data, k);
 
-		// verify that data[i] = i
 		for (int i = 0; i < data.length; i++) {
 			if (data[i] != i) {
 				System.out
@@ -158,57 +115,7 @@ public class Sort {
 		}
 	}
 
-	/**
-	 * Perform timing experiments.
-	 */
-	private static void testTiming() {
-		// timer variables
-		long totalTime = 0;
-		long startTime = 0;
-		long finishTime = 0;
-
-		// n = 200000; 400000; 800000; 1600000; and 3200000
-		int[] n = { 200000, 400000, 800000, 1600000, 3200000 }; // n = size of
-																// the array
-
-		// k = 2; 3; 5; 10; 20; 50
-		int[] k = { 2, 3, 5, 10, 20, 50 }; // k = k in k-way mergesort
-
-		for (int j = 0; j < k.length; j++) {
-			for (int i = 0; i < n.length; i++) {
-				System.out.print(n[i] + "\t" + k[j] + "\t");
-				for (int trial = 0; trial < 3; trial++) {
-					// start the timer
-					Date startDate = new Date();
-					startTime = startDate.getTime();
-
-					int[] data = getRandomArrayOfIntegers(n[i]);
-					kwayMergesort(data, k[j]);
-
-					// stop the timer
-					Date finishDate = new Date();
-					finishTime = finishDate.getTime();
-					totalTime = (finishTime - startTime);
-
-					System.out.print(totalTime + "\t");
-
-					/*
-					 * System.out.println("** Results for k-way mergesort:");
-					 * System.out.println("    " + "n = " + n + "    " + "k = "
-					 * + k); System.out.println("    " + "Time: " + totalTime +
-					 * " ms.");
-					 */
-				}
-				System.out.println();
-			}
-		}
-	}
-
-	/**
-	 * code to test the sorting algorithms
-	 */
 	public static void main(String[] argv) {
 		testCorrectness();
-		// testTiming();
 	}
 }
