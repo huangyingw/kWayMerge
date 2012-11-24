@@ -15,37 +15,13 @@ import java.util.*;
  */
 public class Sort {
 
-	// Constructor for objects of class Sort
 	public Sort() {
 	}
 
-	/**
-	 * Given an array of integers and an integer k, sort the array (ascending
-	 * order) using k-way mergesort.
-	 * 
-	 * @param data
-	 *            an array of integers
-	 * @param k
-	 *            the k in k-way mergesort
-	 */
 	public static void kwayMergesort(int[] data, int k) {
 		kwayMergesortRecursive(data, 0, data.length - 1, k);
 	}
 
-	/**
-	 * The recursive part of k-way mergesort. Given an array of integers (data),
-	 * a low index, high index, and an integer k, sort the subarray
-	 * data[low..high] (ascending order) using k-way mergesort.
-	 * 
-	 * @param data
-	 *            an array of integers
-	 * @param low
-	 *            low index
-	 * @param high
-	 *            high index
-	 * @param k
-	 *            the k in k-way mergesort
-	 */
 	public static void kwayMergesortRecursive(int[] data, int low, int high,
 			int k) {
 		if (low < high) {
@@ -57,17 +33,9 @@ public class Sort {
 		}
 	}
 
-	/**
-	 * Given an array of integers (data), a low index, a high index, and an
-	 * integer k, sort the subarray data[low..high]. This method assumes that
-	 * each of the k subarrays data[low + i*(high-low+1)/k .. low +
-	 * (i+1)*(high-low+1)/k - 1], for i = 0..k-1, are sorted.
-	 */
 	public static void merge(int[] data, int low, int high, int k) {
 
 		if (high < low + k) {
-			// the subarray has k or fewer elements
-			// just make one big heap and do deleteMins on it
 			Comparable[] subarray = new MergesortHeapNode[high - low + 1];
 			for (int i = 0, j = low; i < subarray.length; i++, j++) {
 				subarray[i] = new MergesortHeapNode(data[j], 0);
@@ -171,9 +139,6 @@ public class Sort {
 		return data;
 	}
 
-	/**
-	 * Perform checks to see if the algorithm has a bug.
-	 */
 	private static void testCorrectness() {
 		int[] data = getRandomPermutationOfIntegers(100);
 
